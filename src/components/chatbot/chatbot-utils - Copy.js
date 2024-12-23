@@ -4,27 +4,18 @@ import _ from 'lodash';
 // NLP utilities
 export const nlpUtils = {
   // Analyze query for intent and topics
-  export const nlpUtils = {
   analyzeQuery(query) {
     if (!query) return { intent: 'general', topics: [] };
     
     const lowerQuery = query.toLowerCase();
     const topics = this.identifyTopics(lowerQuery);
-    const intent = this.determineIntent(lowerQuery);  // <-- Called here
+    const intent = this.determineIntent(lowerQuery);
     
     return {
       intent,
       topics,
       isQuestionFormat: this.isQuestion(lowerQuery)
     };
-  },
-
-  determineIntent(query) {  // <-- This is the function you're looking for
-    if (this.isExperienceQuery(query)) return 'experience_duration';
-    if (this.isSkillsQuery(query)) return 'skills_assessment';
-    if (this.isAchievementQuery(query)) return 'achievements';
-    if (this.isLeadershipQuery(query)) return 'leadership';
-    return 'general';
   },
 
   // Determine the intent of the query
